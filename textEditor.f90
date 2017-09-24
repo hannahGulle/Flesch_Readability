@@ -24,14 +24,14 @@ end program texteditor
 ! read_file subroutine
 ! ------------------------------------------------------------------------------
 
-
 subroutine read_file(filesize)
 logical::syllFound
 integer::syllables,words,sentences
 character(LEN=1)::input
 character(LEN=1)::curr,prev
 integer::counter, filesize
-real*8::flesch,fkincaid
+real*8::fkincaid
+integer::flesch
 real*4::aVal,bVal
 syllables = 0
 words = 0
@@ -73,13 +73,9 @@ syllFound = .false.
 200 continue
 close(5)
 
-
 print*, "Syllables ",syllables
 print*, "Words ", words
 print*, "sentences ", sentences
-
-print*, "alpha: ", (syllables/words)
-print*, "beta: ", (words/sentences)
 
 aVal = real(syllables)/real(words)
 bVal = real(words)/real(sentences)
@@ -87,8 +83,11 @@ bVal = real(words)/real(sentences)
 flesch = computeFlesch( aVal, bVal)
 fkincaid = computefKincaid( aVal, bVal )
 
-print*, "flesch: ", flesch
-print*, "fkincaid: ", fkincaid
+write(*,20) "Flesch: ",flesch
+20 format(a,i3)
+
+write(*,30) "FleschKincaid: ",fkincaid
+30 format(a,f3.1)
 
 end subroutine read_file
 

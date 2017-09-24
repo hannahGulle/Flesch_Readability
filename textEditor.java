@@ -40,18 +40,16 @@ public class textEditor{
 				}
 
 				else if(prev == 'e'){
-					if(isPunct(curr) || isSpace(curr) || curr == ',' || curr == ']'){
+					if(isPunct(curr) || isDelim(curr)){
 						num_Syllables--;
 					}
 				}
 
-				else if(isAlpha(prev)){
-					if(isSpace(curr) || curr == ',' || curr == ']'){
-						num_Words++;	
-						if(!syllFound){
-							syllFound = false;
-							num_Syllables++;
-						}
+				else if(isAlpha(prev) && isDelim(curr)){
+					num_Words++;	
+					if(!syllFound){
+						syllFound = false;
+						num_Syllables++;
 					}
 				}	
 				prev = curr;
@@ -70,14 +68,11 @@ public class textEditor{
 	System.out.println("Syllables: " + num_Syllables);
 	System.out.println("Sentences: " + num_Sentences);
 
-	System.out.println("alpha: " + (num_Syllables/num_Words));
-	System.out.println("beta: " + (num_Words/num_Sentences));
-
 	double flesch = computeFlesch(num_Syllables, num_Words, num_Sentences);
 	double fleschKincaid = computeFleschKincaid(num_Syllables, num_Words, num_Sentences);
 	
-	System.out.println("Flesch: " + String.format("%.3f",flesch));
-	System.out.println("Flesch-Kincaid: " + String.format("%.3f",fleschKincaid));
+	System.out.println("Flesch: " + String.format("%.0f",flesch));
+	System.out.println("Flesch-Kincaid: " + String.format("%.1f",fleschKincaid));
 	}
 
 	public static boolean isVowel(char letter){
@@ -100,8 +95,9 @@ public class textEditor{
 		return(punct.indexOf(letter) != -1);
 	}
 
-	public static boolean isSpace(char letter){
-		return(letter == ' ');
+	public static boolean isDelim(char letter){
+		String delim = " ,]";
+		return(delim.indexOf(letter) != -1);
 	}
 
 	public static double computeFlesch(int num_Syllables, int num_Words, int num_Sentences){
@@ -117,5 +113,4 @@ public class textEditor{
 		//Grade = 11.8alpha + 0.39beta - 15.59
 		return( (11.8*alpha) + (0.39*beta) - 15.59);
 	}
-
 }

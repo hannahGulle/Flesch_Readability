@@ -19,76 +19,70 @@ float computeFleschKincaid(int num_Syllables, int num_Words, int num_Sentences);
 
 int main(int argc, char *argv[]){
 
-	int num_Words = 0; //word count
-	int num_Syllables = 0; // syllable count
-	int num_Sentences = 0; // sentence count
+	int num_Words = 0;
+	int num_Syllables = 0;
+	int num_Sentences = 0;
 	
-	//Open File
 	ifstream infile;
 	char* filename = argv[1];
 
 	if(argc ==2){
-		infile.open(filename); //file opened
+		infile.open(filename);
 	}
 	else{
-		cerr << "File Not Found" << endl;
+		cerr << "Error: File Not Found" << endl;
 	}
 
 	char curr, prev;
-	bool syllFound = false;
-	while(infile.get(curr)){//read the file char by char
-		if(!isdigit(curr)){//skip the curr char if it is a number
-			if(!isVowel(prev) && isVowel(curr)){// Ex: " ant"
-				num_Syllables++;//Vowel starting a word is
-				syllFound = true;//a syllable
+	bool syllFound = false;//All words must be at least one syllable
+	while(infile.get(curr)){
+		if(!isdigit(curr)){
+			if(!isVowel(prev) && isVowel(curr)){
+				num_Syllables++;
+				syllFound = true;
 			}
 			else if(isPunct(curr)){
-				num_Sentences++;//it counts a sentence
-				num_Words++;//and a word
+				num_Sentences++;
+				num_Words++;
+				if(!syllFound){//If a word or sentence is found and
+					num_Syllables++;// a syllable hasnt been recorded,
+				}			// record 1 syllable.
+			}
+			else if((prev == 'e') && (isDelim(curr))){
+				num_Syllables--;
+			}
+			else if(isalpha(prev) && isDelim(curr)){
+				num_Words++;
 				if(!syllFound){
 					num_Syllables++;
 				}
 			}
-			else if((prev == 'e')&&(isDelim(curr))){//if prev char was an 'e'
-					num_Syllables--;//and curr char ends a word
-				//the 'e' syllable doesn't count. EX: "e." || "e " || "e,"
-			}
-			else if(isalpha(prev)){//If the prev char is any letter
-				if(isDelim(curr)){//and the curr char is a 
-					num_Words++;//space or comma
-					if(!syllFound){
-						num_Syllables++;
-					}
-				}// and restarts the syllable bool Ex: "bool " && "int,"
-			}
 			prev = curr;	
 		}	
 	}
+	infile.close();
 
 	cout << "Words: " << num_Words << endl;
 	cout << "Syllables: " << num_Syllables << endl;
 	cout << "Sentences: " << num_Sentences << endl;
 
-	infile.close();//file closed
 	float flesch = computeFlesch(num_Syllables, num_Words, num_Sentences);
 	float fleschKincaid = computeFleschKincaid(num_Syllables, num_Words, num_Sentences);
-	cout << "alpha: " << (num_Syllables/num_Words) << endl;
-	cout << "beta: " << (num_Words/num_Sentences) << endl;
-	cout << "Flesch: " << fixed << setprecision(3) << flesch << endl;// print to 1 decimal place
-	cout << "Flesch-Kincaid: "<< fixed << setprecision(3) << fleschKincaid << endl;
+	
+	cout << "Flesch: " << fixed << setprecision(0) << flesch << endl;
+	cout << "Flesch-Kincaid: "<< fixed << setprecision(1) << fleschKincaid << endl;
 	
 	return 0;
 }
+// End of Sentences Punctuation
 bool isPunct(char letter){
 	string punct = ".:;?!";//possible end of sentence punctuation
 	return (punct.find(letter) != -1);
 }
+// Mid-sentence Punctuation
 bool isDelim(char letter){
 	string delim = " ,]";
 	return(delim.find(letter) != -1);
-}
-bool isSpace(char letter){
-	return (letter == ' ');
 }
 
 bool isVowel(char letter){

@@ -30,17 +30,15 @@ foreach $curr (split //, $file_string){
 			}
 		}
 		elsif( $prev eq 'e'){
-			if( (isPunct($curr)) || ($curr eq' ') || $curr eq ',' || ($curr eq ']')){
+			if( (isPunct($curr)) || isDelim($curr)){
 				$syllables--;
 			}
 		}
-		elsif( isAlpha($prev) ){
-			if( $curr eq' ' || $curr eq',' || $curr eq']'){
-				$words++;
-				if($syllFound == 0){
-					$syllFound = 0;
-					$syllables++;
-				}
+		elsif( isAlpha($prev) & isDelim($curr)){
+			$words++;
+			if($syllFound == 0){
+				$syllFound = 0;
+				$syllables++;
 			}
 		}
 		$prev = $curr;
@@ -55,10 +53,11 @@ $beta = ($words/$sentences);
 $flesch = flesch($syllables, $words, $sentences);
 $fkincaid = fkincaid($syllables, $words, $sentences);
 
-print "\n alpha: $alpha \n";
-print "beta: $beta \n";
-print "flesch: $flesch \n";
-print "fkincaid: $fkincaid \n";
+my $printFlesch = sprintf("%.0f", $flesch);
+my $printFleschKincaid = sprintf("%0.1f", $fkincaid);
+
+print "flesch: $printFlesch \n";
+print "fkincaid: $printFleschKincaid \n";
 
 sub flesch{
 	my($syllables, $words, $sentences) = @_;
@@ -78,6 +77,12 @@ sub isVowel{
 	my($curr) = @_;
 	$vowels = "aeiouy";
 	return(index($vowels, $curr) != -1);
+}
+
+sub isDelim{
+	my($curr) = @_;
+	$delims = " ,]";
+	return(index($delims, $curr) != -1);
 }
 
 sub isPunct{
