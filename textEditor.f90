@@ -33,13 +33,26 @@ integer::counter, filesize
 real*8::fkincaid
 integer::flesch
 real*4::aVal,bVal
+
+! For filename parsing from command line
+integer::numArgs, iter
+character(len=12), dimension(:), allocatable:: args
+character(len=32)::fileName
+
 syllables = 0
 words = 0
 sentences = 0
 
+numArgs = command_argument_count()
+if(numArgs > 0) then
+        call get_command_argument(1,fileName)
+        write(*,*) trim(fileName)
+else
+        write(*,*) "No File Given"
+end if
 
 ! get number of characters in file
-open(unit=5,status="old",access="direct",form="unformatted",recl=1,file="KJV.txt")
+open(unit=5,status="old",access="direct",form="unformatted",recl=1,file=fileName)
 
 ! put file in string of correct number of characters
 counter = 1

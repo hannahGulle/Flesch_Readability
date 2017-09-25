@@ -5,8 +5,10 @@
 # August 30, 2017
 
 # Opening File Now
-my $infile = 'KJV.txt';
-open(my $infile, '<:encoding(UTF-8)', $infile) or die "Yo No File Son";
+
+my $infile = <infile>;
+open($infile, '<:encoding(UTF-8)', $infile) or die "Yo No File Son";
+
 read $infile, $file_string, -s $infile;		# -s is length of file
 close $infile;
 
@@ -25,7 +27,6 @@ foreach $curr (split //, $file_string){
 			$sentences++;
 			$words++;
 			if($syllFound == 0){
-				$syllFound = 0;
 				$syllables++;
 			}
 		}
@@ -37,13 +38,13 @@ foreach $curr (split //, $file_string){
 		elsif( isAlpha($prev) & isDelim($curr)){
 			$words++;
 			if($syllFound == 0){
-				$syllFound = 0;
 				$syllables++;
 			}
 		}
 		$prev = $curr;
 	}
 }
+
 print "Syllables: $syllables \n";
 print "Words: $words \n";
 print "Sentences: $sentences \n";

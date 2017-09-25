@@ -13,12 +13,16 @@ with Ada.Characters.Handling;
 use Ada.Characters.Handling;
 with Ada.Float_Text_IO;
 use Ada.Float_Text_IO;
+with Ada.Command_Line;
+use Ada.Command_Line;
 
 procedure texteditor is
 	curr: Character;
 	prev: Character;
-	infile : File_Type;		
-	
+	infile : File_Type;			
+	fileName : String(1..10);
+	fileNameLength : Integer;
+
 	syllables: Integer;
 	words	 : Integer;
 	sentences: Integer;
@@ -55,7 +59,10 @@ begin
 	syllFound := 0;
 	prev := '~'; -- Random insignificant character
 
-	Open(File => infile, Mode => Ada.Text_IO.In_File, Name=>"KJV.txt");
+	Put_Line("Input Filename with Extension");
+	Get_Line(fileName, fileNameLength);
+	
+	Open(File => infile, Mode => Ada.Text_IO.In_File, Name=>fileName);
 	while not End_Of_File(infile) loop
 		Get(File => infile, Item => curr);
 	

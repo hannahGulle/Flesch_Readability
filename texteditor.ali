@@ -12,10 +12,11 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U texteditor%b		texteditor.adb		5f8aa960 NE OO SU IL
+U texteditor%b		texteditor.adb		78846435 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.characters%s	a-charac.ads		a-charac.ali
 W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
 W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
 W ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
 W ada.strings%s		a-string.ads		a-string.ali
@@ -28,6 +29,7 @@ D ada.ads		20070406091342 3ffc8e18 ada%s
 D a-charac.ads		20070912115821 2d3ec45b ada.characters%s
 D a-chahan.ads		20140611123156 1601a50f ada.characters.handling%s
 D a-chlat1.ads		20140225151544 66457d31 ada.characters.latin_1%s
+D a-comlin.ads		20140225151544 ea62afbc ada.command_line%s
 D a-except.ads		20151016123252 291912d5 ada.exceptions%s
 D a-flteio.ads		20070406091342 e18a47a0 ada.float_text_io%s
 D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
@@ -54,62 +56,67 @@ D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
 D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20140731130224 9d58a4c0 system.unsigned_types%s
 D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
-D texteditor.adb	20170924003212 9c77d035 texteditor%b
+D texteditor.adb	20170925161739 511bb2dc texteditor%b
 X 1 ada.ads
-16K9*Ada 19e8 31|6r6 7r5 8r6 9r5 10r6 11r5 12r6 13r5 14r6 15r5 58r38 90r22
-. 90r53
+16K9*Ada 19e8 32|6r6 7r5 8r6 9r5 10r6 11r5 12r6 13r5 14r6 15r5 16r6 17r5
+. 65r38 95r22 95r53
 X 2 a-charac.ads
-16K13*Characters 18e19 31|12r10 13r9
+16K13*Characters 18e19 32|12r10 13r9
 X 3 a-chahan.ads
-36K24*Handling 159e28 31|12w21 13r20
-46V13*Is_Letter{boolean} 31|78s31
-50V13*Is_Digit{boolean} 31|63s24
-X 6 a-flteio.ads
-20K13*Float_Text_IO[13|46] 31|14w10 15r9
-X 7 a-ioexce.ads
-18K13*IO_Exceptions 30e22 31|8w10 9r9 90r26
-26X4*End_Error 31|90r40
-X 9 a-string.ads
-16K13*Strings 35e16 31|10r10 11r9
-X 10 a-strmap.ads
-38K21*Maps 411e21 31|10w18 11r17
-X 12 a-textio.ads
-49K13*Text_IO 471e16 31|6w10 7r9 58r42 90r57
-52P9*File_Type 31|20r18
-53n23*In_File{53E9} 31|58r50
-92U14*Open 31|58s9
-93p7 File{52P9} 31|58r14
-94e7 Mode{53E9} 31|58r30
-95a7 Name{string} 31|58r59
-98U14*Close 31|90s65
-98p22 File{52P9} 31|90r71
-166U14*New_Line 31|104s9
-183V13*End_Of_File{boolean} 31|59s19
-205U14*Get 31|60s17
-205p19 File{52P9} 31|60r21
-205e37 Item{character} 31|60r37
-242U14*Put 31|102s9
-263U14*Put_Line 31|97s9 98s9 99s9 100s9
-X 13 a-tiflio.ads
-68U14*Put 31|103s9[6|20]
-X 31 texteditor.adb
-17U11*texteditor 17b11 105l5 105t15
-18e9 curr{character} 60m45 63r33 64r60 67r40 75r45 75r68 78r60 85r25
-19e9 prev{character} 56m9 64r41 74r31 78r41 85m17
-20p9 infile{12|52P9} 58m22 58r22 59r31 60r29 90m79 90r79
-22i9 syllables{integer} 51m9 65m33 65r46 72m41 72r54 76m41 76r54 82m41 82r54
-. 92r25 97r48
-23i9 words{integer} 52m9 69m33 69r42 79m33 79r42 92r42 93r24 98r44
-24i9 sentences{integer} 53m9 68m33 68r46 93r37 99r48
-26i9 fleschVal{integer} 94m9 100r45
-27f9 fkincaidVal{float} 95m9 103r13
-28f9 alpha{float} 92m9 94r46 95r30
-29f9 beta{float} 93m9 94r62 95r45
-31i9 syllFound{integer} 55m9 66m33 70r36 71m41 80r36 81m41
-33V18 is_Vowel{boolean} 33b18 33>28 36l13 36t21 64s32 64s51
-33e28 curr{character} 35r20 35r37 35r54 35r71 35r88 35r105
-39V18 is_Punct{boolean} 39b18 39>28 42l13 42t21 67s31 75s36
-39e28 curr{character} 41r20 41r37 41r54 41r71 41r88
-45V18 is_Delim{boolean} 45b18 45>28 48l13 48t21 75s59 78s51
-45e28 curr{character} 47r20 47r37 47r54
+36K24*Handling 159e28 32|12w21 13r20
+46V13*Is_Letter{boolean} 32|84s31
+50V13*Is_Digit{boolean} 32|70s24
+X 5 a-comlin.ads
+38K13*Command_Line 139e21 32|16w10 17r9
+X 7 a-flteio.ads
+20K13*Float_Text_IO[14|46] 32|14w10 15r9
+X 8 a-ioexce.ads
+18K13*IO_Exceptions 30e22 32|8w10 9r9 95r26
+26X4*End_Error 32|95r40
+X 10 a-string.ads
+16K13*Strings 35e16 32|10r10 11r9
+X 11 a-strmap.ads
+38K21*Maps 411e21 32|10w18 11r17
+X 13 a-textio.ads
+49K13*Text_IO 471e16 32|6w10 7r9 65r42 95r57
+52P9*File_Type 32|22r18
+53n23*In_File{53E9} 32|65r50
+92U14*Open 32|65s9
+93p7 File{52P9} 32|65r14
+94e7 Mode{53E9} 32|65r30
+95a7 Name{string} 32|65r59
+98U14*Close 32|95s65
+98p22 File{52P9} 32|95r71
+166U14*New_Line 32|109s9
+183V13*End_Of_File{boolean} 32|66s19
+205U14*Get 32|67s17
+205p19 File{52P9} 32|67r21
+205e37 Item{character} 32|67r37
+242U14*Put 32|107s9
+249U14*Get_Line 32|63s9
+263U14*Put_Line 32|62s9 102s9 103s9 104s9 105s9
+X 14 a-tiflio.ads
+68U14*Put 32|108s9[7|20]
+X 32 texteditor.adb
+19U11*texteditor 19b11 110l5 110t15
+20e9 curr{character} 67m45 70r33 71r60 74r40 81r45 81r68 84r60 90r25
+21e9 prev{character} 60m9 71r41 80r31 84r41 90m17
+22p9 infile{13|52P9} 65m22 65r22 66r31 67r29 95m79 95r79
+23a9 fileName{string} 63m18 65r65
+24i9 fileNameLength{integer} 63m28
+26i9 syllables{integer} 55m9 72m33 72r46 78m41 78r54 82m41 82r54 87m41 87r54
+. 97r25 102r48
+27i9 words{integer} 56m9 76m33 76r42 85m33 85r42 97r42 98r24 103r44
+28i9 sentences{integer} 57m9 75m33 75r46 98r37 104r48
+30i9 fleschVal{integer} 99m9 105r45
+31f9 fkincaidVal{float} 100m9 108r13
+32f9 alpha{float} 97m9 99r46 100r30
+33f9 beta{float} 98m9 99r62 100r45
+35i9 syllFound{integer} 59m9 73m33 77r36 86r36
+37V18 is_Vowel{boolean} 37b18 37>28 40l13 40t21 71s32 71s51
+37e28 curr{character} 39r20 39r37 39r54 39r71 39r88 39r105
+43V18 is_Punct{boolean} 43b18 43>28 46l13 46t21 74s31 81s36
+43e28 curr{character} 45r20 45r37 45r54 45r71 45r88
+49V18 is_Delim{boolean} 49b18 49>28 52l13 52t21 81s59 84s51
+49e28 curr{character} 51r20 51r37 51r54
 

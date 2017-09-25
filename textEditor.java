@@ -5,6 +5,7 @@
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.Character;
+import java.util.Scanner;
 
 public class textEditor{
 	public static void main(String[] args) throws IOException{
@@ -13,11 +14,14 @@ public class textEditor{
 	int num_Words = 0;
 	int num_Sentences = 0;
 
+	Scanner in = new Scanner(System.in);
+	System.out.println("Input Filename with Extension");
+	String filename = in.next();
 
 	//Open file for parsing
 	FileReader infile = null;
 	try{
-		infile = new FileReader("KJV.txt");		
+		infile = new FileReader(filename);		
 
 		int ch;
 		char prev = '~';
@@ -29,26 +33,21 @@ public class textEditor{
 					num_Syllables++;
 					syllFound = true;
 				}
-
 				else if(isPunct(curr)){
 					num_Sentences++;
 					num_Words++;
 					if(!syllFound){
-						syllFound = false;
 						num_Syllables++;
 					}
 				}
-
 				else if(prev == 'e'){
 					if(isPunct(curr) || isDelim(curr)){
 						num_Syllables--;
 					}
 				}
-
 				else if(isAlpha(prev) && isDelim(curr)){
 					num_Words++;	
 					if(!syllFound){
-						syllFound = false;
 						num_Syllables++;
 					}
 				}	
