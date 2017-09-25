@@ -56,7 +56,7 @@ D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
 D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20140731130224 9d58a4c0 system.unsigned_types%s
 D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
-D texteditor.adb	20170925161739 511bb2dc texteditor%b
+D texteditor.adb	20170925194425 511bb2dc texteditor%b
 X 1 ada.ads
 16K9*Ada 19e8 32|6r6 7r5 8r6 9r5 10r6 11r5 12r6 13r5 14r6 15r5 16r6 17r5
 . 65r38 95r22 95r53
