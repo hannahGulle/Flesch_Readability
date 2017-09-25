@@ -1,0 +1,122 @@
+V "GNAT Lib v6"
+M P W=b
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U texteditor%b		texteditor.adb		78846435 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.maps%s	a-strmap.adb		a-strmap.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system.concat_2%s	s-conca2.adb		s-conca2.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+
+D ada.ads		20070406091342 3ffc8e18 ada%s
+D a-charac.ads		20070912115821 2d3ec45b ada.characters%s
+D a-chahan.ads		20140611123156 1601a50f ada.characters.handling%s
+D a-chlat1.ads		20140225151544 66457d31 ada.characters.latin_1%s
+D a-comlin.ads		20140225151544 ea62afbc ada.command_line%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-flteio.ads		20070406091342 e18a47a0 ada.float_text_io%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-string.ads		20070406091342 90ac6797 ada.strings%s
+D a-strmap.ads		20140611123156 e8bb714a ada.strings.maps%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-tiflio.ads		20140717063513 56fbda09 ada.text_io.float_io%s
+D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20151118101227 4be8ce1b interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D system.ads		20151123113124 6326c08a system%s
+D s-conca2.ads		20140225151544 02a0d7d0 system.concat_2%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-imgint.ads		20090409150019 02dbe0c2 system.img_int%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20140731130224 9d58a4c0 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+D texteditor.adb	20170925161739 511bb2dc texteditor%b
+X 1 ada.ads
+16K9*Ada 19e8 32|6r6 7r5 8r6 9r5 10r6 11r5 12r6 13r5 14r6 15r5 16r6 17r5
+. 65r38 95r22 95r53
+X 2 a-charac.ads
+16K13*Characters 18e19 32|12r10 13r9
+X 3 a-chahan.ads
+36K24*Handling 159e28 32|12w21 13r20
+46V13*Is_Letter{boolean} 32|84s31
+50V13*Is_Digit{boolean} 32|70s24
+X 5 a-comlin.ads
+38K13*Command_Line 139e21 32|16w10 17r9
+X 7 a-flteio.ads
+20K13*Float_Text_IO[14|46] 32|14w10 15r9
+X 8 a-ioexce.ads
+18K13*IO_Exceptions 30e22 32|8w10 9r9 95r26
+26X4*End_Error 32|95r40
+X 10 a-string.ads
+16K13*Strings 35e16 32|10r10 11r9
+X 11 a-strmap.ads
+38K21*Maps 411e21 32|10w18 11r17
+X 13 a-textio.ads
+49K13*Text_IO 471e16 32|6w10 7r9 65r42 95r57
+52P9*File_Type 32|22r18
+53n23*In_File{53E9} 32|65r50
+92U14*Open 32|65s9
+93p7 File{52P9} 32|65r14
+94e7 Mode{53E9} 32|65r30
+95a7 Name{string} 32|65r59
+98U14*Close 32|95s65
+98p22 File{52P9} 32|95r71
+166U14*New_Line 32|109s9
+183V13*End_Of_File{boolean} 32|66s19
+205U14*Get 32|67s17
+205p19 File{52P9} 32|67r21
+205e37 Item{character} 32|67r37
+242U14*Put 32|107s9
+249U14*Get_Line 32|63s9
+263U14*Put_Line 32|62s9 102s9 103s9 104s9 105s9
+X 14 a-tiflio.ads
+68U14*Put 32|108s9[7|20]
+X 32 texteditor.adb
+19U11*texteditor 19b11 110l5 110t15
+20e9 curr{character} 67m45 70r33 71r60 74r40 81r45 81r68 84r60 90r25
+21e9 prev{character} 60m9 71r41 80r31 84r41 90m17
+22p9 infile{13|52P9} 65m22 65r22 66r31 67r29 95m79 95r79
+23a9 fileName{string} 63m18 65r65
+24i9 fileNameLength{integer} 63m28
+26i9 syllables{integer} 55m9 72m33 72r46 78m41 78r54 82m41 82r54 87m41 87r54
+. 97r25 102r48
+27i9 words{integer} 56m9 76m33 76r42 85m33 85r42 97r42 98r24 103r44
+28i9 sentences{integer} 57m9 75m33 75r46 98r37 104r48
+30i9 fleschVal{integer} 99m9 105r45
+31f9 fkincaidVal{float} 100m9 108r13
+32f9 alpha{float} 97m9 99r46 100r30
+33f9 beta{float} 98m9 99r62 100r45
+35i9 syllFound{integer} 59m9 73m33 77r36 86r36
+37V18 is_Vowel{boolean} 37b18 37>28 40l13 40t21 71s32 71s51
+37e28 curr{character} 39r20 39r37 39r54 39r71 39r88 39r105
+43V18 is_Punct{boolean} 43b18 43>28 46l13 46t21 74s31 81s36
+43e28 curr{character} 45r20 45r37 45r54 45r71 45r88
+49V18 is_Delim{boolean} 49b18 49>28 52l13 52t21 81s59 84s51
+49e28 curr{character} 51r20 51r37 51r54
+
