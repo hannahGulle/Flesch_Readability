@@ -5,8 +5,9 @@
 # August 30, 2017
 
 # Opening File Now
-
-my $infile = <infile>;
+print"Input File Name with Extension";
+my $infile = <stdin>;
+chomp $infile;
 open($infile, '<:encoding(UTF-8)', $infile) or die "Yo No File Son";
 
 read $infile, $file_string, -s $infile;		# -s is length of file
